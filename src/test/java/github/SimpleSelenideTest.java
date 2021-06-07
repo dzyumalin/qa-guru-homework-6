@@ -22,8 +22,7 @@ public class SimpleSelenideTest {
         SelenideLogger.addListener("allure", new AllureSelenide());
         open(BASE_URL);
         $(".header-search-input").click();
-        $(".header-search-input").setValue(REPOSITORY);
-        $(".header-search-input").submit();
+        $(".header-search-input").setValue(REPOSITORY).submit();
         $(By.linkText("allure-framework/allure2")).click();
         $(withText("Issues")).click();
         $(withText("#" + ISSUE_NUMBER)).should(Condition.visible);
@@ -39,8 +38,7 @@ public class SimpleSelenideTest {
         step("Ищем репозиторий" + REPOSITORY, (s) -> {
             s.parameter("Repository", REPOSITORY);
             $(".header-search-input").click();
-            $(".header-search-input").setValue(REPOSITORY);
-            $(".header-search-input").submit();
+            $(".header-search-input").setValue(REPOSITORY).submit();
         });
 
         step("Переходим в репозиторий" + REPOSITORY, (s) -> {
