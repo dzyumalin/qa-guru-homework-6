@@ -1,11 +1,11 @@
 package github;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -25,7 +25,7 @@ public class SimpleSelenideTest {
         $(".header-search-input").setValue(REPOSITORY).submit();
         $(By.linkText("allure-framework/allure2")).click();
         $(withText("Issues")).click();
-        $(withText("#" + ISSUE_NUMBER)).should(Condition.visible);
+        $(withText("#" + ISSUE_NUMBER)).should(visible);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class SimpleSelenideTest {
 
         step("Проверяем Issue с номером " + ISSUE_NUMBER + " существует", (s) -> {
             s.parameter("Number", ISSUE_NUMBER);
-            $(withText("#" + ISSUE_NUMBER)).should(Condition.visible);
+            $(withText("#" + ISSUE_NUMBER)).should(visible);
         });
     }
 }
